@@ -44,7 +44,11 @@ export default class PlatformRemote implements PlatformAPI {
       this.currentUser = session.currentUser;
       this.extra = session.extra;
       const url = new URL(session.baseURL);
-      const wsUrl = `ws://${url.host}`;
+      const wsProtocol = url.protocol === "http:" ? "ws://" : "wss://";
+
+      const wsUrl = session.extra.wsURL
+        ? `${wsProtocol}${session.extra.wsURL}`
+        : `${wsProtocol}${url.host}`;
       this.initWebsocket(wsUrl, this.currentUser.id);
       const body = JSON.stringify({ session });
       await this.fetchRemote(Api.INIT, body);
@@ -68,7 +72,11 @@ export default class PlatformRemote implements PlatformAPI {
       const baseURL = new URL(creds.custom.baseURL);
       this.baseURL = baseURL.origin;
 
-      const wsUrl = `ws://${baseURL.host}`;
+      const wsProtocol = baseURL.protocol === "http:" ? "ws://" : "wss://";
+
+      const wsUrl = creds.custom.wsURL
+        ? `${wsProtocol}${creds.custom.wsURL}`
+        : `${wsProtocol}${baseURL.host}`;
       const currentUserID = uuid();
       this.initWebsocket(wsUrl, currentUserID);
       const body = JSON.stringify({ creds, currentUserID });

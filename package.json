@@ -1,5 +1,5 @@
 {
-  "name": "@textshq/platform-remote",
+  "name": "@textshq/platform-remote-telnyx",
   "version": "0.1.0",
   "main": "dist/index.js",
   "scripts": {
@@ -8,8 +8,8 @@
     "lint": "eslint src --ext ts,tsx,js,jsx --cache"
   },
   "dependencies": {
-    "@textshq/platform-sdk": "file: ~/../../platform-sdk/",
-    "react": "file: ~/../../react-global-shim-main/",
+    "@textshq/platform-sdk": "file: ~/../../../../platform-sdk/",
+    "react": "file: ~/../../../../react-global-shim-main/",
     "ws": "^8.16.0"
   },
   "devDependencies": {
