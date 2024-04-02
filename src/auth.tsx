@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-// import QRCode from 'qrcode.react'
 import type { AuthProps } from "@textshq/platform-sdk";
 
 export const Auth: React.FC<AuthProps> = ({ login }) => {
   const [baseURL, setBaseURL] = useState<string>("http://localhost:8080");
   const [label, setLabel] = useState<string>("Test");
-  // const [apiKey, seyApiKey] = useState<string>("");
 
   const handleLogin = () => {
     if (login) {
@@ -13,7 +11,6 @@ export const Auth: React.FC<AuthProps> = ({ login }) => {
         custom: {
           label,
           baseURL,
-          // apiKey
         },
       });
     }
@@ -51,25 +48,6 @@ export const Auth: React.FC<AuthProps> = ({ login }) => {
             placeholder="Enter Base URL"
           />
         </div>
-        {/* <div
-          style={{
-            width: "70%",
-          }}
-        >
-          <label htmlFor="base-url" style={{ width: "90%" }}>
-            API Key
-          </label>
-          <input
-            id="base-url"
-            type="text"
-            value={apiKey}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              seyApiKey(event.target.value)
-            }
-            style={{ width: "100%" }}
-            placeholder="Enter Telnyx API Key"
-          />
-        </div> */}
         <div
           style={{
             width: "70%",
